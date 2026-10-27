@@ -49,4 +49,45 @@ function calcular(){
 }
 ids.forEach(id=>document.getElementById(id).addEventListener('input',calcular));calcular();
 </script>
+<!-- INICIO CALCULADORA NPK UTEC: pegar antes de </body> -->
+<section id="calculadora-npk" style="max-width:1100px;margin:35px auto;padding:25px;background:#fff;border-radius:15px;box-shadow:0 4px 20px #0001;font-family:Arial,sans-serif;color:#20352b">
+<h2 style="color:#17613d">Calculadora de nutrientes N-P-K</h2>
+<p>Calculá el aporte de fertilizantes comerciales y su concentración en el volumen total de agua de riego.</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:15px">
+<label>Fertilizante<br><select id="npk-producto" style="width:100%;padding:12px;margin-top:6px"><option value="46,0,0">Urea (46-0-0)</option><option value="13,0,46">Nitrato de potasio (13-0-46)</option><option value="15.5,0,0">Nitrato de calcio (15,5-0-0)*</option><option value="0,52,34">Fosfato monopotásico (0-52-34)</option><option value="12,61,0">Fosfato monoamónico (12-61-0)</option><option value="0,0,50">Sulfato de potasio (0-0-50)</option><option value="custom">Personalizado</option></select></label>
+<label>Fertilizante aplicado (kg)<br><input id="npk-kg" type="number" min="0" step="any" value="2" style="width:100%;padding:12px;margin-top:6px"></label>
+<label>Volumen total de agua de riego (L)<br><input id="npk-litros" type="number" min="0.001" step="any" value="10000" style="width:100%;padding:12px;margin-top:6px"></label>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:18px">
+<label>N (%)<input id="npk-n" type="number" min="0" max="100" step="any" value="46" style="width:100%;padding:10px"></label>
+<label>P₂O₅ (%)<input id="npk-p" type="number" min="0" max="100" step="any" value="0" style="width:100%;padding:10px"></label>
+<label>K₂O (%)<input id="npk-k" type="number" min="0" max="100" step="any" value="0" style="width:100%;padding:10px"></label>
+</div>
+<button type="button" id="npk-calcular" style="background:#17613d;color:white;border:0;padding:14px 22px;border-radius:8px;margin-top:20px;cursor:pointer;font-weight:bold">Calcular nutrientes</button>
+<p id="npk-error" role="alert" style="color:#a32626"></p>
+<div id="npk-resultados" aria-live="polite" style="background:#edf5ef;padding:18px;border-radius:12px;margin-top:15px"></div>
+<p style="font-size:13px;color:#526458">* Las formulaciones son orientativas; verificá siempre la etiqueta comercial. La concentración calculada es el aporte teórico promedio al volumen de agua, suponiendo mezcla completa y ausencia de nutrientes iniciales. No sustituye el análisis de agua, el análisis foliar, ni las verificaciones de solubilidad y compatibilidad. No mezclar concentrados de calcio con fosfatos o sulfatos sin verificar compatibilidad.</p>
+</section>
+<script>
+(function(){
+ const el=id=>document.getElementById(id);
+ const fmt=x=>x.toLocaleString('es-UY',{maximumFractionDigits:3});
+ function calculate(){
+  const kg=Number(el('npk-kg').value), L=Number(el('npk-litros').value);
+  const n=Number(el('npk-n').value),p=Number(el('npk-p').value),k=Number(el('npk-k').value);
+  if([kg,L,n,p,k].some(x=>!Number.isFinite(x))||kg<0||L<=0||[n,p,k].some(x=>x<0||x>100)||n+p+k>100){el('npk-error').textContent='Revisá los datos: volumen positivo, masa no negativa y porcentajes válidos (suma máxima 100 %).';el('npk-resultados').textContent='';return;}
+  el('npk-error').textContent='';
+  const grams=[n,p,k].map(x=>kg*1000*x/100);
+  const elemental=[grams[0],grams[1]*0.4364,grams[2]*0.8301];
+  const names=['N','P₂O₅','K₂O'];
+  el('npk-resultados').innerHTML='<strong>Aporte de nutrientes</strong><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:12px">'+grams.map((g,i)=>'<div style="background:white;padding:12px;border-radius:8px"><strong>'+names[i]+'</strong><p style="font-size:23px;margin:8px 0">'+fmt(g)+' g</p><small>'+fmt(g*1000/L)+' mg/L</small></div>').join('')+'</div><p><strong>Equivalentes elementales:</strong> N: '+fmt(elemental[0])+' g; P: '+fmt(elemental[1])+' g; K: '+fmt(elemental[2])+' g.</p>';
+ }
+ el('npk-producto').addEventListener('change',function(){if(this.value!=='custom'){const vals=this.value.split(',');['npk-n','npk-p','npk-k'].forEach((id,i)=>el(id).value=vals[i]);}calculate();});
+ ['npk-kg','npk-litros','npk-n','npk-p','npk-k'].forEach(id=>el(id).addEventListener('input',calculate));
+ el('npk-calcular').addEventListener('click',calculate);
+ calculate();
+})();
+</script>
+<!-- FIN CALCULADORA NPK UTEC -->
+
 </body></html>
