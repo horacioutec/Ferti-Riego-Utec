@@ -69,6 +69,9 @@
 .hero.hero-academica .btn:hover,.hero.hero-academica .btn:focus{background:#087749}
 .hero.hero-academica .btn-secondary:hover,.hero.hero-academica .btn-secondary:focus{background:#64802b}
 @media(max-width:780px){.hero-people-columns{grid-template-columns:1fr;gap:16px}.hero-people ul{font-size:15px}.hero-group-photo{max-width:400px}}
+
+/* Módulo didáctico Venturi */
+.venturi-layout{display:grid;grid-template-columns:1.1fr 1fr;gap:22px;align-items:start}.venturi-figure{background:#f0f8f3;border-radius:12px;padding:15px}.venturi-figure svg{width:100%;height:auto}.venturi-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.venturi-controls .field{margin:0}.venturi-status{padding:14px;border-radius:9px;background:#e9f4e9;margin-top:15px}.venturi-status.warn{background:#fff2d7}.venturi-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-top:20px}.venturi-step{background:#f0f7f1;padding:18px;border-radius:10px}.venturi-step b{color:#17613d}.venturi-legend{font-size:13px;color:#496252;margin:8px 0 0}.venturi-section .note{font-size:14px}@media(max-width:760px){.venturi-layout{grid-template-columns:1fr}.venturi-controls{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -80,6 +83,7 @@
 <a href="#concepto">Concepto</a>
 <a href="#ventajas">Ventajas</a>
 <a href="#sistema">Sistema</a>
+<a href="#venturi">Venturi</a>
 <a href="#calculadora">Calculadora de riego</a>
 <a href="#calculadora-npk">Calculadora N-P-K</a>
 <a href="#quimica">Química</a>
@@ -96,6 +100,46 @@
 <section id="concepto"><h2>¿Qué es el fertirriego?</h2><p>El fertirriego consiste en aplicar fertilizantes disueltos mediante un sistema de riego. La dosificación depende de la demanda del cultivo, el caudal de agua y la concentración de la solución nutritiva.</p><p>Un sistema típico integra una fuente de agua, filtros, bomba, equipo inyector, tuberías y emisores. La inyección debe contar con dispositivos de prevención de retorno y medidas de seguridad adecuadas.</p></section>
 <section id="ventajas"><h2>Principales ventajas</h2><div class="cards"><div class="card"><h3>💧 Eficiencia hídrica</h3><p>Aplicación controlada de agua y nutrientes.</p></div><div class="card"><h3>🌱 Nutrición vegetal</h3><p>Dosificación adaptada a las necesidades del cultivo.</p></div><div class="card"><h3>⚙️ Automatización</h3><p>Integración de inyectores, sensores y controladores.</p></div></div></section>
 <section id="sistema"><h2>¿Cómo funciona un sistema de fertirriego?</h2><p>El agua circula por la red principal. Un inyector introduce una solución concentrada de fertilizante, que se mezcla con el caudal antes de llegar a los emisores.</p><div class="diagram"><div class="path"><div class="node"><b>💧 Fuente de agua</b>Tanque o reservorio</div><span class="arrow">➜</span><div class="node"><b>⚙️ Bomba y filtro</b>Presión y filtración</div><span class="arrow">➜</span><div class="node inject"><b>🧪 Punto de inyección</b>Venturi o dosificadora</div><span class="arrow">➜</span><div class="node"><b>🌱 Goteros</b>Agua y nutrientes a raíces</div></div><div class="hint"><b>Solución madre:</b> depósito de fertilizante → inyector → tubería principal. Instalar protección antirretorno adecuada y respetar el orden de filtración e inyección según el diseño y el fabricante.</div></div><div class="cards" style="margin-top:20px"><div class="card"><h3>Inyector Venturi</h3><p>Aprovecha una diferencia de presión para aspirar la solución madre; su dosificación depende de las condiciones hidráulicas.</p></div><div class="card"><h3>Bomba dosificadora</h3><p>Permite ajustar el caudal de inyección; debe dimensionarse para el rango de trabajo y la presión del sistema.</p></div><div class="card"><h3>Control y sensores</h3><p>Caudalímetro, manómetros, sensores de pH y CE ayudan a supervisar la aplicación.</p></div></div></section>
+
+<section id="venturi" class="venturi-section" aria-labelledby="venturi-titulo">
+<h2 id="venturi-titulo">Inyector Venturi: funcionamiento y simulador</h2>
+<p>El inyector Venturi permite incorporar una solución fertilizante al agua de riego sin una bomba dosificadora propia. Se basa en la <strong>conversión entre presión y energía cinética</strong>: el agua se acelera al pasar por una garganta estrecha y su presión estática disminuye. Si la presión en la garganta es menor que la del depósito de solución madre, puede producirse aspiración.</p>
+<div class="venturi-layout">
+ <div class="diagram">
+ <h3>Esquema hidráulico</h3>
+ <div class="venturi-figure">
+ <svg viewBox="0 0 620 335" role="img" aria-label="Esquema del Venturi: agua entra por la izquierda, se acelera en la garganta, aspira fertilizante desde un depósito inferior y sale mezclada por la derecha">
+ <defs><linearGradient id="venturiwater"><stop stop-color="#a4dbed"/><stop offset="1" stop-color="#65b7d1"/></linearGradient><marker id="v-arrow" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#087bb1" stroke-width="1.5"/></marker><marker id="v-green" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#29944e" stroke-width="1.5"/></marker></defs>
+ <path d="M18 65 H160 L258 110 H348 L450 65 H602 V183 H450 L348 139 H258 L160 183 H18 Z" fill="url(#venturiwater)" stroke="#21698a" stroke-width="4"/>
+ <path d="M45 124 H150 M260 124 H340 M470 124 H565" stroke="#087bb1" stroke-width="7" marker-end="url(#v-arrow)"/>
+ <path d="M303 269 V142" stroke="#29944e" stroke-width="13"/><path d="M303 260 V164" stroke="#c7ed9e" stroke-width="7" marker-end="url(#v-green)"/>
+ <path d="M240 269 H366 V320 H240 Z" fill="#d5ebc5" stroke="#348e55" stroke-width="3"/><path d="M243 292 H363 V318 H243 Z" fill="#90c879"/>
+ <g fill="#173b25" font-size="17" font-family="Arial" text-anchor="middle"><text x="85" y="43">Entrada</text><text x="304" y="43">Garganta</text><text x="524" y="43">Salida</text><text x="304" y="330" font-size="14">Solución madre</text></g>
+ <g fill="#175c79" font-size="14" font-family="Arial" text-anchor="middle"><text x="89" y="208">Presión inicial</text><text x="304" y="91">Presión menor</text><text x="522" y="208">Mezcla</text></g>
+ </svg>
+ <p class="venturi-legend">Diagrama conceptual, no a escala. La presión se recupera parcialmente después de la garganta; existen pérdidas de carga.</p>
+ </div>
+ <div class="venturi-steps"><div class="venturi-step"><b>1. Convergencia</b><p>La sección disminuye y el agua aumenta su velocidad.</p></div><div class="venturi-step"><b>2. Garganta</b><p>La presión estática baja y puede aspirar la solución fertilizante.</p></div><div class="venturi-step"><b>3. Difusor</b><p>La velocidad disminuye y parte de la presión se recupera.</p></div></div>
+ </div>
+ <div class="calculator">
+ <h3>Simulador de efecto Venturi</h3>
+ <p class="note">Modelo ideal de Bernoulli, a igual altura y sin pérdidas, para explorar el efecto del estrechamiento. <strong>No calcula el caudal real de fertilizante aspirado.</strong></p>
+ <div class="venturi-controls">
+ <div class="field"><label for="v-flow">Caudal de agua (m³/h)</label><input id="v-flow" type="number" min="0.01" max="100" step="0.1" value="2"/></div>
+ <div class="field"><label for="v-pressure">Presión de entrada (bar manométricos)</label><input id="v-pressure" type="number" min="0" max="25" step="0.1" value="2.5"/></div>
+ <div class="field"><label for="v-d1">Diámetro de entrada (mm)</label><input id="v-d1" type="number" min="1" max="250" step="1" value="32"/></div>
+ <div class="field"><label for="v-d2">Diámetro de garganta (mm)</label><input id="v-d2" type="number" min="1" max="250" step="1" value="18"/></div>
+ </div>
+ <div id="v-error" class="error" role="status" aria-live="polite"></div>
+ <div id="v-results" class="result" aria-live="polite"></div>
+ <div id="v-status" class="venturi-status" aria-live="polite"></div>
+ </div>
+</div>
+<div class="hint"><strong>Instalación mediante bypass:</strong> una derivación en paralelo con la tubería principal contiene el inyector; las válvulas permiten establecer la diferencia de presión necesaria para que funcione. El depósito de fertilizante se conecta a la toma de succión mediante manguera, filtro y válvula de retención. Se requiere protección antirretorno adecuada para impedir la contaminación de la fuente de agua.</div>
+<p><strong>Fundamento físico:</strong> para dos puntos a igual altura, despreciando pérdidas, <strong>P₁ + ½ρv₁² = P₂ + ½ρv₂²</strong>, con <strong>v = Q/A</strong>. En un inyector real intervienen las pérdidas de carga, la presión de salida, la geometría, el nivel del depósito y las curvas de funcionamiento del fabricante.</p>
+<p class="note">Precaución: que el modelo muestre presión en la garganta menor que la atmosférica no garantiza aspiración efectiva ni un caudal de inyección determinado. Para dimensionar un Venturi real se debe consultar la curva del fabricante, medir presiones de entrada y salida y verificar compatibilidad química y protección contra retorno.</p>
+</section>
+
 <section id="calculadora"><h2>Calculadora de fertirriego</h2><p>Ingresá las concentraciones en <b>gramos de fertilizante por litro (g/L)</b>. El cálculo supone mezcla ideal, agua de entrada sin el fertilizante considerado y solución madre de concentración conocida.</p><div class="calculator"><div class="field"><label for="agua">Caudal de agua antes de la inyección (L/h)</label><input id="agua" min="0" step="any" type="number" value="10000"/></div><div class="field"><label for="objetivo">Concentración final deseada (g/L)</label><input id="objetivo" min="0" step="any" type="number" value="0.1"/></div><div class="field"><label for="madre">Concentración de la solución madre (g/L)</label><input id="madre" min="0" step="any" type="number" value="100"/></div><div class="field"><label for="horas">Duración del riego (horas)</label><input id="horas" min="0" step="any" type="number" value="2"/></div><div class="field"><label for="tanque">Capacidad del tanque de solución madre (L)</label><input id="tanque" min="0" step="any" type="number" value="100"/></div><div aria-live="polite" class="result" id="resultado"></div><p class="note"><small>Balance de masa: Q<sub>inyección</sub> = Q<sub>agua</sub> × C<sub>final</sub> / (C<sub>madre</sub> − C<sub>final</sub>). La concentración final incluye el volumen inyectado. Se calcula masa de fertilizante, no masa de un nutriente específico. Verificá solubilidad, compatibilidad, calidad del agua y capacidad del inyector antes de aplicar en campo.</small></p></div></section>
 <section id="calculadora-npk"><h2>Calculadora de nutrientes N-P-K</h2><p>Calculá el aporte de fertilizantes comerciales y su concentración promedio en el volumen total de agua de riego.</p><div class="calculator"><div class="npk-fields"><div><label for="npk-producto">Fertilizante</label><select id="npk-producto"><option value="46,0,0">Urea (46-0-0)</option><option value="13,0,46">Nitrato de potasio (13-0-46)</option><option value="15.5,0,0">Nitrato de calcio (15,5-0-0)*</option><option value="0,52,34">Fosfato monopotásico (0-52-34)</option><option value="12,61,0">Fosfato monoamónico (12-61-0)</option><option value="0,0,50">Sulfato de potasio (0-0-50)</option><option value="custom">Personalizado</option></select></div><div><label for="npk-kg">Fertilizante aplicado (kg)</label><input id="npk-kg" min="0" step="any" type="number" value="2"/></div><div><label for="npk-litros">Volumen total de agua de riego (L)</label><input id="npk-litros" min="0.001" step="any" type="number" value="10000"/></div></div><div class="npk-pcts"><div><label for="npk-n">N (%)</label><input id="npk-n" max="100" min="0" step="any" type="number" value="46"/></div><div><label for="npk-p">P₂O₅ (%)</label><input id="npk-p" max="100" min="0" step="any" type="number" value="0"/></div><div><label for="npk-k">K₂O (%)</label><input id="npk-k" max="100" min="0" step="any" type="number" value="0"/></div></div><button class="action" id="npk-calcular" type="button">Calcular nutrientes</button><p class="error" id="npk-error" role="alert"></p><div aria-live="polite" class="result" id="npk-resultados"></div><p class="note"><small>* Formulaciones orientativas: verificá la etiqueta comercial. Los porcentajes N-P-K expresan N, P₂O₅ y K₂O, no P y K elementales. El cálculo supone mezcla completa y ausencia de nutrientes iniciales. No sustituye análisis de agua ni comprobaciones de solubilidad y compatibilidad.</small></p></div></section>
 <section id="quimica"><h2>Química y seguridad del fertirriego</h2><div class="cards"><div class="card"><h3>pH</h3><p>Influye en la disponibilidad de nutrientes y en la formación de precipitados. Medir el pH del agua y de la mezcla final.</p></div><div class="card"><h3>Conductividad eléctrica (CE)</h3><p>Indica la concentración iónica global de la solución, pero no identifica nutrientes individuales. Controlar la salinidad según cultivo y agua.</p></div><div class="card"><h3>Solubilidad y compatibilidad</h3><p>La solubilidad depende del fertilizante y de la temperatura. Algunas mezclas, como calcio con fosfatos o sulfatos concentrados, pueden precipitar.</p></div></div><p class="hint">Antes de aplicar: realizar análisis de agua, consultar fichas técnicas y comprobar compatibilidad. Estas calculadoras son didácticas y no sustituyen una recomendación agronómica ni el dimensionamiento hidráulico.</p></section>
@@ -167,6 +211,31 @@ ids.forEach(id=>document.getElementById(id).addEventListener('input',calcular));
  menu.querySelectorAll('a').forEach(enlace=>enlace.addEventListener('click',cerrar));
  document.addEventListener('keydown',e=>{if(e.key==='Escape')cerrar();});
  window.matchMedia('(min-width: 851px)').addEventListener('change',cerrar);
+})();
+</script>
+
+<script>
+(function(){
+ const get=id=>document.getElementById(id);
+ const fields=['v-flow','v-pressure','v-d1','v-d2'];
+ const number=n=>n.toLocaleString('es-UY',{maximumFractionDigits:3});
+ function update(){
+  const raw=fields.map(id=>get(id).value.trim());
+  const [flow,p1,d1,d2]=raw.map(Number);
+  const err=get('v-error'),out=get('v-results'),status=get('v-status');
+  if(raw.some(x=>x==='')||![flow,p1,d1,d2].every(Number.isFinite)||flow<=0||p1<0||d1<=0||d2<=0||d2>=d1){
+   err.textContent='Ingresá un caudal positivo, presión no negativa y una garganta menor que el diámetro de entrada.';out.innerHTML='';status.textContent='';return;
+  }
+  err.textContent='';
+  const q=flow/3600,area1=Math.PI*(d1/1000)**2/4,area2=Math.PI*(d2/1000)**2/4;
+  const v1=q/area1,v2=q/area2,dp=0.5*1000*(v2*v2-v1*v1)/100000,p2=p1-dp;
+  const metrics=[['Velocidad de entrada',number(v1)+' m/s'],['Velocidad en garganta',number(v2)+' m/s'],['Caída ideal de presión',number(dp)+' bar'],['Presión ideal en garganta',number(p2)+' bar (man.)']];
+  out.innerHTML='<div class="metrics">'+metrics.map(([label,val])=>'<div class="metric">'+label+'<strong>'+val+'</strong></div>').join('')+'</div>';
+  const lower=p2<0;
+  status.className='venturi-status'+(lower?' warn':'');
+  status.textContent=lower?'El cálculo ideal da presión manométrica negativa en la garganta: podría existir condición favorable para aspiración desde un depósito abierto, pero deben verificarse las pérdidas y la curva del inyector.':'La presión ideal de garganta permanece por encima de la atmosférica. Para aspirar desde un depósito abierto a presión atmosférica, este caso no muestra depresión suficiente; la presión real y la instalación deben verificarse.';
+ }
+ fields.forEach(id=>get(id).addEventListener('input',update));update();
 })();
 </script>
 </body>
