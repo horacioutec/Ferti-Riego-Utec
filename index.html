@@ -1,93 +1,62 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fertirriego inteligente | UTEC</title>
 <style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#20352b;background:#f5f8f5}header{background:#123e2a;color:white;padding:18px 7%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}.logo{font-weight:800;font-size:22px}nav{display:flex;flex-wrap:wrap;gap:15px}nav a{color:white;text-decoration:none}.hero{min-height:440px;display:flex;align-items:center;padding:65px 8%;color:white;background:linear-gradient(90deg,rgba(10,45,29,.94),rgba(10,45,29,.35)),url('https://images.unsplash.com/photo-1620200423727-8127f75d7f53?auto=format&fit=crop&w=1600&q=85') center/cover}.hero-content{max-width:700px}.hero h1{font-size:clamp(38px,7vw,66px);margin:0 0 18px}.hero p{font-size:21px;line-height:1.6}.btn{display:inline-block;background:#9dd45b;color:#173b25;padding:15px 24px;border-radius:8px;font-weight:bold;text-decoration:none;margin-top:18px}section{padding:55px 8%;max-width:1200px;margin:auto}h2{color:#17613d;font-size:30px}section p{line-height:1.7;font-size:17px}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}.card,.calculator{background:white;padding:25px;border-radius:12px;box-shadow:0 3px 15px #00000012}.card h3{color:#17613d}.calculator{max-width:750px}.field{margin:17px 0}label{display:block;font-weight:bold;margin-bottom:8px}input{width:100%;padding:13px;font-size:17px;border:1px solid #a9b9ae;border-radius:7px}input:focus{outline:2px solid #409767}.result{background:#edf6e8;border-radius:10px;padding:20px;margin-top:20px}.result strong{display:block;color:#155c36;font-size:28px;margin:7px 0}.result p{margin:8px 0}small,.note{color:#4e6056;line-height:1.6}.error{color:#a32626;font-weight:bold}footer{background:#123e2a;color:white;text-align:center;padding:25px}@media(max-width:600px){.hero{min-height:450px}section{padding:38px 6%}.card,.calculator{padding:20px}}
-
-.diagram{background:white;border-radius:14px;padding:24px;box-shadow:0 3px 15px #00000012}.path{display:flex;flex-wrap:wrap;align-items:center;gap:10px;justify-content:center}.node{background:#e9f4e9;border:2px solid #26764a;border-radius:12px;padding:15px;text-align:center;min-width:125px;flex:1}.node b{display:block;margin-bottom:5px}.arrow{font-size:26px;color:#26764a}.inject{background:#fff5dc;border-color:#b88a24}.hint{background:#f0f6f1;border-left:4px solid #26764a;padding:15px;border-radius:5px;margin-top:20px}.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}.metric{background:#edf6e8;padding:15px;border-radius:10px}.metric strong{font-size:21px;color:#155c36;display:block;margin-top:5px}.status{font-weight:bold}.warning{color:#a05a00}.ok{color:#17613d}@media(max-width:600px){.arrow{transform:rotate(90deg)}.path{flex-direction:column}.node{width:100%}}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:105px}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#20352b;background:#f5f8f5}header{position:sticky;top:0;z-index:20;background:#123e2a;color:white;padding:16px 6%;display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;box-shadow:0 2px 8px #0002}.logo{font-size:21px;font-weight:800}nav{display:flex;gap:8px;flex-wrap:wrap}nav a{color:white;text-decoration:none;padding:9px 11px;border-radius:7px;font-size:14px}nav a:hover,nav a:focus{background:#286344;outline-offset:2px}.hero{min-height:440px;display:flex;align-items:center;padding:65px 8%;color:white;background:linear-gradient(90deg,rgba(10,45,29,.94),rgba(10,45,29,.35)),url('https://images.unsplash.com/photo-1620200423727-8127f75d7f53?auto=format&fit=crop&w=1600&q=85') center/cover}.hero-content{max-width:700px}.hero h1{font-size:clamp(38px,7vw,66px);margin:0 0 18px}.hero p{font-size:21px;line-height:1.6}.btn{display:inline-block;background:#9dd45b;color:#173b25;padding:15px 24px;border-radius:8px;font-weight:bold;text-decoration:none;margin-top:18px}section{padding:52px 7%;max-width:1200px;margin:auto}h2{color:#17613d;font-size:30px}section p{line-height:1.7;font-size:17px}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}.card,.calculator,.diagram{background:white;padding:25px;border-radius:12px;box-shadow:0 3px 15px #00000012}.card h3{color:#17613d}.calculator{max-width:820px}.field{margin:16px 0}label{display:block;font-weight:bold;margin-bottom:8px}input,select{width:100%;padding:12px;font-size:16px;border:1px solid #a9b9ae;border-radius:7px;background:white}input:focus,select:focus{outline:2px solid #409767}.result{background:#edf6e8;border-radius:10px;padding:20px;margin-top:20px}.result strong{color:#155c36}small,.note{color:#4e6056;line-height:1.6}.error{color:#a32626;font-weight:bold}.path{display:flex;flex-wrap:wrap;align-items:center;gap:10px;justify-content:center}.node{background:#e9f4e9;border:2px solid #26764a;border-radius:12px;padding:15px;text-align:center;min-width:125px;flex:1}.node b{display:block;margin-bottom:5px}.arrow{font-size:25px;color:#26764a}.inject{background:#fff5dc;border-color:#b88a24}.hint{background:#f0f6f1;border-left:4px solid #26764a;padding:15px;border-radius:5px;margin-top:20px}.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}.metric{background:#edf6e8;padding:15px;border-radius:10px}.metric strong{font-size:21px;display:block;margin-top:6px}.warning{color:#a05a00}.ok{color:#17613d}.npk-fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:15px}.npk-pcts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}.action{background:#17613d;color:white;border:0;padding:14px 22px;border-radius:8px;margin-top:18px;cursor:pointer;font-weight:bold;font-size:16px}footer{background:#123e2a;color:white;text-align:center;padding:25px}@media(max-width:600px){header{padding:13px 5%}nav{gap:3px}nav a{font-size:13px;padding:8px}.hero{min-height:450px}section{padding:38px 6%}.card,.calculator,.diagram{padding:20px}.arrow{transform:rotate(90deg)}.path{flex-direction:column}.node{width:100%}.npk-pcts{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<header><div class="logo">FERTIRRIEGO | UTEC</div><nav><a href="#inicio">Inicio</a><a href="#concepto">Concepto</a><a href="#ventajas">Ventajas</a><a href="#sistema">Sistema</a><a href="#calculadora">Calculadora</a><a href="#quimica">Química</a></nav></header>
+<header>
+ <div class="logo">FERTIRRIEGO | UTEC</div>
+ <nav aria-label="Navegación principal">
+  <a href="#inicio">Inicio</a>
+  <a href="#concepto">Concepto</a>
+  <a href="#ventajas">Ventajas</a>
+  <a href="#sistema">Sistema</a>
+  <a href="#calculadora">Calculadora de riego</a>
+  <a href="#calculadora-npk">Calculadora N-P-K</a>
+  <a href="#quimica">Química</a>
+ </nav>
+</header>
 <div class="hero" id="inicio"><div class="hero-content"><h1>Fertirriego inteligente</h1><p>Agua y nutrientes aplicados con precisión para una agricultura más eficiente, productiva y sostenible.</p><a class="btn" href="#calculadora">Probar calculadora</a></div></div>
 <section id="concepto"><h2>¿Qué es el fertirriego?</h2><p>El fertirriego consiste en aplicar fertilizantes disueltos mediante un sistema de riego. La dosificación depende de la demanda del cultivo, el caudal de agua y la concentración de la solución nutritiva.</p><p>Un sistema típico integra una fuente de agua, filtros, bomba, equipo inyector, tuberías y emisores. La inyección debe contar con dispositivos de prevención de retorno y medidas de seguridad adecuadas.</p></section>
 <section id="ventajas"><h2>Principales ventajas</h2><div class="cards"><div class="card"><h3>💧 Eficiencia hídrica</h3><p>Aplicación controlada de agua y nutrientes.</p></div><div class="card"><h3>🌱 Nutrición vegetal</h3><p>Dosificación adaptada a las necesidades del cultivo.</p></div><div class="card"><h3>⚙️ Automatización</h3><p>Integración de inyectores, sensores y controladores.</p></div></div></section>
 <section id="sistema"><h2>¿Cómo funciona un sistema de fertirriego?</h2><p>El agua circula por la red principal. Un inyector introduce una solución concentrada de fertilizante, que se mezcla con el caudal antes de llegar a los emisores.</p><div class="diagram"><div class="path"><div class="node"><b>💧 Fuente de agua</b>Tanque o reservorio</div><span class="arrow">➜</span><div class="node"><b>⚙️ Bomba y filtro</b>Presión y filtración</div><span class="arrow">➜</span><div class="node inject"><b>🧪 Punto de inyección</b>Venturi o dosificadora</div><span class="arrow">➜</span><div class="node"><b>🌱 Goteros</b>Agua y nutrientes a raíces</div></div><div class="hint"><b>Solución madre:</b> depósito de fertilizante → inyector → tubería principal. Instalar protección antirretorno adecuada y respetar el orden de filtración e inyección según el diseño y el fabricante.</div></div><div class="cards" style="margin-top:20px"><div class="card"><h3>Inyector Venturi</h3><p>Aprovecha una diferencia de presión para aspirar la solución madre; su dosificación depende de las condiciones hidráulicas.</p></div><div class="card"><h3>Bomba dosificadora</h3><p>Permite ajustar el caudal de inyección; debe dimensionarse para el rango de trabajo y la presión del sistema.</p></div><div class="card"><h3>Control y sensores</h3><p>Caudalímetro, manómetros, sensores de pH y CE ayudan a supervisar la aplicación.</p></div></div></section>
-<section id="calculadora"><h2>Calculadora de fertirriego</h2><p>Ingresá las concentraciones en <b>gramos de fertilizante por litro (g/L)</b>. El cálculo supone mezcla ideal, agua de entrada sin el fertilizante considerado y solución madre de concentración conocida.</p><div class="calculator">
-<div class="field"><label for="agua">Caudal de agua antes de la inyección (L/h)</label><input id="agua" type="number" min="0" step="any" value="10000"></div>
-<div class="field"><label for="objetivo">Concentración final deseada (g/L)</label><input id="objetivo" type="number" min="0" step="any" value="0.1"></div>
-<div class="field"><label for="madre">Concentración de la solución madre (g/L)</label><input id="madre" type="number" min="0" step="any" value="100"></div>
-<div class="field"><label for="horas">Duración del riego (horas)</label><input id="horas" type="number" min="0" step="any" value="2"></div>
-<div class="field"><label for="tanque">Capacidad del tanque de solución madre (L)</label><input id="tanque" type="number" min="0" step="any" value="100"></div>
-<div id="resultado" class="result" aria-live="polite"></div>
-<p class="note"><small>Balance de masa: Q<sub>inyección</sub> = Q<sub>agua</sub> × C<sub>final</sub> / (C<sub>madre</sub> − C<sub>final</sub>). La concentración final incluye el volumen inyectado. Se calcula masa de fertilizante, no masa de un nutriente específico. Verificá solubilidad, compatibilidad, calidad del agua y capacidad del inyector antes de aplicar en campo.</small></p>
-</div></section>
-<section id="quimica"><h2>Química y seguridad del fertirriego</h2><div class="cards"><div class="card"><h3>pH</h3><p>Influye en la disponibilidad de nutrientes y en la formación de precipitados. Medir el pH del agua y de la mezcla final.</p></div><div class="card"><h3>Conductividad eléctrica (CE)</h3><p>Indica la concentración iónica global de la solución, pero no identifica nutrientes individuales. Controlar la salinidad según cultivo y agua.</p></div><div class="card"><h3>Solubilidad y compatibilidad</h3><p>La solubilidad depende del fertilizante y de la temperatura. Algunas mezclas, como calcio con fosfatos o sulfatos concentrados, pueden precipitar.</p></div></div><p class="hint">Antes de aplicar: realizar análisis de agua, consultar fichas técnicas y comprobar compatibilidad. La calculadora es didáctica y no sustituye una recomendación agronómica ni el dimensionamiento hidráulico.</p></section>
+<section id="calculadora"><h2>Calculadora de fertirriego</h2><p>Ingresá las concentraciones en <b>gramos de fertilizante por litro (g/L)</b>. El cálculo supone mezcla ideal, agua de entrada sin el fertilizante considerado y solución madre de concentración conocida.</p><div class="calculator"><div class="field"><label for="agua">Caudal de agua antes de la inyección (L/h)</label><input id="agua" type="number" min="0" step="any" value="10000"></div><div class="field"><label for="objetivo">Concentración final deseada (g/L)</label><input id="objetivo" type="number" min="0" step="any" value="0.1"></div><div class="field"><label for="madre">Concentración de la solución madre (g/L)</label><input id="madre" type="number" min="0" step="any" value="100"></div><div class="field"><label for="horas">Duración del riego (horas)</label><input id="horas" type="number" min="0" step="any" value="2"></div><div class="field"><label for="tanque">Capacidad del tanque de solución madre (L)</label><input id="tanque" type="number" min="0" step="any" value="100"></div><div id="resultado" class="result" aria-live="polite"></div><p class="note"><small>Balance de masa: Q<sub>inyección</sub> = Q<sub>agua</sub> × C<sub>final</sub> / (C<sub>madre</sub> − C<sub>final</sub>). La concentración final incluye el volumen inyectado. Se calcula masa de fertilizante, no masa de un nutriente específico. Verificá solubilidad, compatibilidad, calidad del agua y capacidad del inyector antes de aplicar en campo.</small></p></div></section>
+<section id="calculadora-npk"><h2>Calculadora de nutrientes N-P-K</h2><p>Calculá el aporte de fertilizantes comerciales y su concentración promedio en el volumen total de agua de riego.</p><div class="calculator"><div class="npk-fields"><div><label for="npk-producto">Fertilizante</label><select id="npk-producto"><option value="46,0,0">Urea (46-0-0)</option><option value="13,0,46">Nitrato de potasio (13-0-46)</option><option value="15.5,0,0">Nitrato de calcio (15,5-0-0)*</option><option value="0,52,34">Fosfato monopotásico (0-52-34)</option><option value="12,61,0">Fosfato monoamónico (12-61-0)</option><option value="0,0,50">Sulfato de potasio (0-0-50)</option><option value="custom">Personalizado</option></select></div><div><label for="npk-kg">Fertilizante aplicado (kg)</label><input id="npk-kg" type="number" min="0" step="any" value="2"></div><div><label for="npk-litros">Volumen total de agua de riego (L)</label><input id="npk-litros" type="number" min="0.001" step="any" value="10000"></div></div><div class="npk-pcts"><div><label for="npk-n">N (%)</label><input id="npk-n" type="number" min="0" max="100" step="any" value="46"></div><div><label for="npk-p">P₂O₅ (%)</label><input id="npk-p" type="number" min="0" max="100" step="any" value="0"></div><div><label for="npk-k">K₂O (%)</label><input id="npk-k" type="number" min="0" max="100" step="any" value="0"></div></div><button type="button" class="action" id="npk-calcular">Calcular nutrientes</button><p id="npk-error" role="alert" class="error"></p><div id="npk-resultados" class="result" aria-live="polite"></div><p class="note"><small>* Formulaciones orientativas: verificá la etiqueta comercial. Los porcentajes N-P-K expresan N, P₂O₅ y K₂O, no P y K elementales. El cálculo supone mezcla completa y ausencia de nutrientes iniciales. No sustituye análisis de agua ni comprobaciones de solubilidad y compatibilidad.</small></p></div></section>
+<section id="quimica"><h2>Química y seguridad del fertirriego</h2><div class="cards"><div class="card"><h3>pH</h3><p>Influye en la disponibilidad de nutrientes y en la formación de precipitados. Medir el pH del agua y de la mezcla final.</p></div><div class="card"><h3>Conductividad eléctrica (CE)</h3><p>Indica la concentración iónica global de la solución, pero no identifica nutrientes individuales. Controlar la salinidad según cultivo y agua.</p></div><div class="card"><h3>Solubilidad y compatibilidad</h3><p>La solubilidad depende del fertilizante y de la temperatura. Algunas mezclas, como calcio con fosfatos o sulfatos concentrados, pueden precipitar.</p></div></div><p class="hint">Antes de aplicar: realizar análisis de agua, consultar fichas técnicas y comprobar compatibilidad. Estas calculadoras son didácticas y no sustituyen una recomendación agronómica ni el dimensionamiento hidráulico.</p></section>
 <footer>Proyecto educativo | Ingeniería del Agua y Desarrollo Sostenible | UTEC</footer>
 <script>
-const ids=['agua','objetivo','madre','horas','tanque'];const fmt=n=>n.toLocaleString('es-UY',{maximumFractionDigits:3});
+const fmt=n=>n.toLocaleString('es-UY',{maximumFractionDigits:3});
+const ids=['agua','objetivo','madre','horas','tanque'];
 function calcular(){
  const values=ids.map(id=>document.getElementById(id).value.trim());
  const [q,c,s,t,cap]=values.map(Number);
  const out=document.getElementById('resultado');
- if(values.some(v=>v==='')||![q,c,s,t,cap].every(Number.isFinite)||q<=0||c<=0||s<=c||t<=0||cap<=0){
- out.innerHTML='<p class="error">Ingresá valores positivos; la solución madre debe tener una concentración mayor que la concentración final.</p>';return;
- }
- const qi=q*c/(s-c), masa=qi*s,vol=qi*t, total=masa*t/1000, faltante=Math.max(0,vol-cap);
- const autonomia=cap/qi;
- out.innerHTML='<div class="metrics">'+
- '<div class="metric">Caudal de inyección<strong>'+fmt(qi)+' L/h</strong></div>'+
- '<div class="metric">Inyección por minuto<strong>'+fmt(qi*1000/60)+' mL/min</strong></div>'+
- '<div class="metric">Fertilizante por hora<strong>'+fmt(masa/1000)+' kg/h</strong></div>'+
- '<div class="metric">Solución madre necesaria<strong>'+fmt(vol)+' L</strong></div>'+
- '<div class="metric">Fertilizante total<strong>'+fmt(total)+' kg</strong></div>'+
- '<div class="metric">Autonomía del tanque<strong>'+fmt(autonomia)+' h</strong></div></div>'+
- '<p class="status '+(faltante>0?'warning':'ok')+'">'+(faltante>0?'⚠️ El tanque no alcanza: faltan '+fmt(faltante)+' L de solución madre.':'✓ El tanque alcanza para el tiempo de aplicación indicado.')+'</p>'+
- '<p>Para preparar '+fmt(vol)+' L de solución madre a '+fmt(s)+' g/L se requieren '+fmt(total)+' kg de fertilizante, suponiendo que el volumen final preparado sea '+fmt(vol)+' L.</p>';
+ if(values.some(v=>v==='')||![q,c,s,t,cap].every(Number.isFinite)||q<=0||c<=0||s<=c||t<=0||cap<=0){out.innerHTML='<p class="error">Ingresá valores positivos; la solución madre debe tener una concentración mayor que la concentración final.</p>';return;}
+ const qi=q*c/(s-c),masa=qi*s,vol=qi*t,total=masa*t/1000,faltante=Math.max(0,vol-cap),autonomia=cap/qi;
+ const items=[['Caudal de inyección',fmt(qi)+' L/h'],['Inyección por minuto',fmt(qi*1000/60)+' mL/min'],['Fertilizante por hora',fmt(masa/1000)+' kg/h'],['Solución madre necesaria',fmt(vol)+' L'],['Fertilizante total',fmt(total)+' kg'],['Autonomía del tanque',fmt(autonomia)+' h']];
+ out.innerHTML='<div class="metrics">'+items.map(([k,v])=>'<div class="metric">'+k+'<strong>'+v+'</strong></div>').join('')+'</div><p class="'+(faltante>0?'warning':'ok')+'">'+(faltante>0?'⚠️ El tanque no alcanza: faltan '+fmt(faltante)+' L de solución madre.':'✓ El tanque alcanza para el tiempo indicado.')+'</p><p>Para preparar '+fmt(vol)+' L de solución madre a '+fmt(s)+' g/L se requieren '+fmt(total)+' kg de fertilizante, suponiendo que el volumen final preparado sea '+fmt(vol)+' L.</p>';
 }
 ids.forEach(id=>document.getElementById(id).addEventListener('input',calcular));calcular();
-</script>
-<!-- INICIO CALCULADORA NPK UTEC: pegar antes de </body> -->
-<section id="calculadora-npk" style="max-width:1100px;margin:35px auto;padding:25px;background:#fff;border-radius:15px;box-shadow:0 4px 20px #0001;font-family:Arial,sans-serif;color:#20352b">
-<h2 style="color:#17613d">Calculadora de nutrientes N-P-K</h2>
-<p>Calculá el aporte de fertilizantes comerciales y su concentración en el volumen total de agua de riego.</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:15px">
-<label>Fertilizante<br><select id="npk-producto" style="width:100%;padding:12px;margin-top:6px"><option value="46,0,0">Urea (46-0-0)</option><option value="13,0,46">Nitrato de potasio (13-0-46)</option><option value="15.5,0,0">Nitrato de calcio (15,5-0-0)*</option><option value="0,52,34">Fosfato monopotásico (0-52-34)</option><option value="12,61,0">Fosfato monoamónico (12-61-0)</option><option value="0,0,50">Sulfato de potasio (0-0-50)</option><option value="custom">Personalizado</option></select></label>
-<label>Fertilizante aplicado (kg)<br><input id="npk-kg" type="number" min="0" step="any" value="2" style="width:100%;padding:12px;margin-top:6px"></label>
-<label>Volumen total de agua de riego (L)<br><input id="npk-litros" type="number" min="0.001" step="any" value="10000" style="width:100%;padding:12px;margin-top:6px"></label>
-</div>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:18px">
-<label>N (%)<input id="npk-n" type="number" min="0" max="100" step="any" value="46" style="width:100%;padding:10px"></label>
-<label>P₂O₅ (%)<input id="npk-p" type="number" min="0" max="100" step="any" value="0" style="width:100%;padding:10px"></label>
-<label>K₂O (%)<input id="npk-k" type="number" min="0" max="100" step="any" value="0" style="width:100%;padding:10px"></label>
-</div>
-<button type="button" id="npk-calcular" style="background:#17613d;color:white;border:0;padding:14px 22px;border-radius:8px;margin-top:20px;cursor:pointer;font-weight:bold">Calcular nutrientes</button>
-<p id="npk-error" role="alert" style="color:#a32626"></p>
-<div id="npk-resultados" aria-live="polite" style="background:#edf5ef;padding:18px;border-radius:12px;margin-top:15px"></div>
-<p style="font-size:13px;color:#526458">* Las formulaciones son orientativas; verificá siempre la etiqueta comercial. La concentración calculada es el aporte teórico promedio al volumen de agua, suponiendo mezcla completa y ausencia de nutrientes iniciales. No sustituye el análisis de agua, el análisis foliar, ni las verificaciones de solubilidad y compatibilidad. No mezclar concentrados de calcio con fosfatos o sulfatos sin verificar compatibilidad.</p>
-</section>
-<script>
 (function(){
  const el=id=>document.getElementById(id);
- const fmt=x=>x.toLocaleString('es-UY',{maximumFractionDigits:3});
  function calculate(){
-  const kg=Number(el('npk-kg').value), L=Number(el('npk-litros').value);
-  const n=Number(el('npk-n').value),p=Number(el('npk-p').value),k=Number(el('npk-k').value);
-  if([kg,L,n,p,k].some(x=>!Number.isFinite(x))||kg<0||L<=0||[n,p,k].some(x=>x<0||x>100)||n+p+k>100){el('npk-error').textContent='Revisá los datos: volumen positivo, masa no negativa y porcentajes válidos (suma máxima 100 %).';el('npk-resultados').textContent='';return;}
+  const fieldIds=['npk-kg','npk-litros','npk-n','npk-p','npk-k'];
+  const raw=fieldIds.map(id=>el(id).value.trim());
+  const [kg,L,n,p,k]=raw.map(Number);
+  if(raw.some(v=>v==='')||[kg,L,n,p,k].some(x=>!Number.isFinite(x))||kg<0||L<=0||[n,p,k].some(x=>x<0||x>100)||n+p+k>100){el('npk-error').textContent='Revisá los datos: volumen positivo, masa no negativa y porcentajes válidos (suma máxima 100 %).';el('npk-resultados').textContent='';return;}
   el('npk-error').textContent='';
-  const grams=[n,p,k].map(x=>kg*1000*x/100);
-  const elemental=[grams[0],grams[1]*0.4364,grams[2]*0.8301];
-  const names=['N','P₂O₅','K₂O'];
-  el('npk-resultados').innerHTML='<strong>Aporte de nutrientes</strong><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:12px">'+grams.map((g,i)=>'<div style="background:white;padding:12px;border-radius:8px"><strong>'+names[i]+'</strong><p style="font-size:23px;margin:8px 0">'+fmt(g)+' g</p><small>'+fmt(g*1000/L)+' mg/L</small></div>').join('')+'</div><p><strong>Equivalentes elementales:</strong> N: '+fmt(elemental[0])+' g; P: '+fmt(elemental[1])+' g; K: '+fmt(elemental[2])+' g.</p>';
+  const grams=[n,p,k].map(x=>kg*1000*x/100),elemental=[grams[0],grams[1]*0.4364,grams[2]*0.8301],names=['N','P₂O₅','K₂O'];
+  el('npk-resultados').innerHTML='<strong>Aporte de nutrientes</strong><div class="metrics" style="margin-top:12px">'+grams.map((g,i)=>'<div class="metric"><b>'+names[i]+'</b><strong>'+fmt(g)+' g</strong><small>'+fmt(g*1000/L)+' mg/L</small></div>').join('')+'</div><p><b>Equivalentes elementales:</b> N: '+fmt(elemental[0])+' g; P: '+fmt(elemental[1])+' g; K: '+fmt(elemental[2])+' g.</p>';
  }
  el('npk-producto').addEventListener('change',function(){if(this.value!=='custom'){const vals=this.value.split(',');['npk-n','npk-p','npk-k'].forEach((id,i)=>el(id).value=vals[i]);}calculate();});
  ['npk-kg','npk-litros','npk-n','npk-p','npk-k'].forEach(id=>el(id).addEventListener('input',calculate));
- el('npk-calcular').addEventListener('click',calculate);
- calculate();
+ el('npk-calcular').addEventListener('click',calculate);calculate();
 })();
 </script>
-<!-- FIN CALCULADORA NPK UTEC -->
-
-</body></html>
+</body>
+</html>
