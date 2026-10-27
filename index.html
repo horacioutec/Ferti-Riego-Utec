@@ -2,23 +2,159 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Fertirriego - UTEC</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fertirriego | UTEC</title>
+<style>
+* {box-sizing:border-box}
+body {
+  margin:0;
+  font-family:Arial,sans-serif;
+  color:#20352b;
+  background:#f5f8f5;
+}
+header {
+  background:#123e2a;
+  color:white;
+  padding:18px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px;
+}
+.logo {font-size:22px;font-weight:bold}
+nav a {
+  color:white;
+  text-decoration:none;
+  margin-right:15px;
+}
+.hero {
+  min-height:440px;
+  display:flex;
+  align-items:center;
+  padding:65px 8%;
+  color:white;
+  background:
+    linear-gradient(90deg,
+      rgba(10,45,29,.94),
+      rgba(10,45,29,.35)),
+    url("https://images.unsplash.com/photo-1620200423727-8127f75d7f53?auto=format&fit=crop&w=1600&q=85")
+    center/cover;
+}
+.hero-content {max-width:680px}
+.hero h1 {
+  font-size:clamp(38px,7vw,66px);
+  margin:0 0 18px;
+}
+.hero p {
+  font-size:21px;
+  line-height:1.6;
+}
+.btn {
+  display:inline-block;
+  background:#9dd45b;
+  color:#173b25;
+  padding:15px 24px;
+  border-radius:8px;
+  font-weight:bold;
+  text-decoration:none;
+  margin-top:18px;
+}
+section {
+  padding:55px 8%;
+  max-width:1200px;
+  margin:auto;
+}
+h2 {color:#17613d;font-size:30px}
+section p {line-height:1.8;font-size:18px}
+.cards {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+.card {
+  background:white;
+  padding:25px;
+  border-radius:12px;
+  box-shadow:0 3px 15px #00000012;
+}
+.card h3 {color:#17613d}
+footer {
+  background:#123e2a;
+  color:white;
+  text-align:center;
+  padding:25px;
+}
+</style>
 </head>
 <body>
-  <h1>Fertirriego</h1>
-  <h2>Agua y nutrientes para una agricultura eficiente</h2>
 
-  <p>El fertirriego es una técnica que permite aplicar fertilizantes disueltos en el agua de riego.</p>
+<header>
+  <div class="logo">FERTIRRIEGO | UTEC</div>
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#concepto">Concepto</a>
+    <a href="#ventajas">Ventajas</a>
+  </nav>
+</header>
 
-  <h2>Ventajas del fertirriego</h2>
-  <ul>
-    <li>Mayor eficiencia en el uso del agua.</li>
-    <li>Aplicación precisa de nutrientes.</li>
-    <li>Reducción de pérdidas de fertilizantes.</li>
-    <li>Mejor control de la nutrición vegetal.</li>
-  </ul>
+<div class="hero" id="inicio">
+  <div class="hero-content">
+    <h1>Fertirriego inteligente</h1>
+    <p>
+      Agua y nutrientes aplicados con precisión
+      para una agricultura más eficiente,
+      productiva y sostenible.
+    </p>
+    <a class="btn" href="#concepto">
+      Explorar el fertirriego
+    </a>
+  </div>
+</div>
+
+<section id="concepto">
+  <h2>¿Qué es el fertirriego?</h2>
+  <p>
+    El fertirriego es la aplicación de
+    fertilizantes solubles mediante el
+    sistema de riego, permitiendo suministrar
+    agua y nutrientes de forma controlada
+    según las necesidades del cultivo.
+  </p>
+  <p>
+    Es una tecnología utilizada especialmente
+    en sistemas de riego localizado y permite
+    mejorar la eficiencia del manejo hídrico
+    y nutricional.
+  </p>
+</section>
+
+<section id="ventajas">
+  <h2>Principales ventajas</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>💧 Eficiencia hídrica</h3>
+      <p>Mejor aprovechamiento del agua
+      mediante aplicaciones controladas.</p>
+    </div>
+    <div class="card">
+      <h3>🌱 Nutrición vegetal</h3>
+      <p>Dosificación de nutrientes
+      adaptada a las etapas del cultivo.</p>
+    </div>
+    <div class="card">
+      <h3>⚙️ Automatización</h3>
+      <p>Integración de bombas, sensores,
+      inyectores y controladores.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Proyecto educativo | Ingeniería del Agua
+  y Desarrollo Sostenible | UTEC
+</footer>
+
 </body>
 </html>
-
