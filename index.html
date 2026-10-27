@@ -1,160 +1,29 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fertirriego | UTEC</title>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fertirriego inteligente | UTEC</title>
 <style>
-* {box-sizing:border-box}
-body {
-  margin:0;
-  font-family:Arial,sans-serif;
-  color:#20352b;
-  background:#f5f8f5;
-}
-header {
-  background:#123e2a;
-  color:white;
-  padding:18px 7%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:12px;
-}
-.logo {font-size:22px;font-weight:bold}
-nav a {
-  color:white;
-  text-decoration:none;
-  margin-right:15px;
-}
-.hero {
-  min-height:440px;
-  display:flex;
-  align-items:center;
-  padding:65px 8%;
-  color:white;
-  background:
-    linear-gradient(90deg,
-      rgba(10,45,29,.94),
-      rgba(10,45,29,.35)),
-    url("https://images.unsplash.com/photo-1620200423727-8127f75d7f53?auto=format&fit=crop&w=1600&q=85")
-    center/cover;
-}
-.hero-content {max-width:680px}
-.hero h1 {
-  font-size:clamp(38px,7vw,66px);
-  margin:0 0 18px;
-}
-.hero p {
-  font-size:21px;
-  line-height:1.6;
-}
-.btn {
-  display:inline-block;
-  background:#9dd45b;
-  color:#173b25;
-  padding:15px 24px;
-  border-radius:8px;
-  font-weight:bold;
-  text-decoration:none;
-  margin-top:18px;
-}
-section {
-  padding:55px 8%;
-  max-width:1200px;
-  margin:auto;
-}
-h2 {color:#17613d;font-size:30px}
-section p {line-height:1.8;font-size:18px}
-.cards {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:20px;
-}
-.card {
-  background:white;
-  padding:25px;
-  border-radius:12px;
-  box-shadow:0 3px 15px #00000012;
-}
-.card h3 {color:#17613d}
-footer {
-  background:#123e2a;
-  color:white;
-  text-align:center;
-  padding:25px;
-}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#20352b;background:#f5f8f5}header{background:#123e2a;color:white;padding:18px 7%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}.logo{font-weight:800;font-size:22px}nav{display:flex;flex-wrap:wrap;gap:15px}nav a{color:white;text-decoration:none}.hero{min-height:440px;display:flex;align-items:center;padding:65px 8%;color:white;background:linear-gradient(90deg,rgba(10,45,29,.94),rgba(10,45,29,.35)),url('https://images.unsplash.com/photo-1620200423727-8127f75d7f53?auto=format&fit=crop&w=1600&q=85') center/cover}.hero-content{max-width:700px}.hero h1{font-size:clamp(38px,7vw,66px);margin:0 0 18px}.hero p{font-size:21px;line-height:1.6}.btn{display:inline-block;background:#9dd45b;color:#173b25;padding:15px 24px;border-radius:8px;font-weight:bold;text-decoration:none;margin-top:18px}section{padding:55px 8%;max-width:1200px;margin:auto}h2{color:#17613d;font-size:30px}section p{line-height:1.7;font-size:17px}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}.card,.calculator{background:white;padding:25px;border-radius:12px;box-shadow:0 3px 15px #00000012}.card h3{color:#17613d}.calculator{max-width:750px}.field{margin:17px 0}label{display:block;font-weight:bold;margin-bottom:8px}input{width:100%;padding:13px;font-size:17px;border:1px solid #a9b9ae;border-radius:7px}input:focus{outline:2px solid #409767}.result{background:#edf6e8;border-radius:10px;padding:20px;margin-top:20px}.result strong{display:block;color:#155c36;font-size:28px;margin:7px 0}.result p{margin:8px 0}small,.note{color:#4e6056;line-height:1.6}.error{color:#a32626;font-weight:bold}footer{background:#123e2a;color:white;text-align:center;padding:25px}@media(max-width:600px){.hero{min-height:450px}section{padding:38px 6%}.card,.calculator{padding:20px}}
 </style>
 </head>
 <body>
-
-<header>
-  <div class="logo">FERTIRRIEGO | UTEC</div>
-  <nav>
-    <a href="#inicio">Inicio</a>
-    <a href="#concepto">Concepto</a>
-    <a href="#ventajas">Ventajas</a>
-  </nav>
-</header>
-
-<div class="hero" id="inicio">
-  <div class="hero-content">
-    <h1>Fertirriego inteligente</h1>
-    <p>
-      Agua y nutrientes aplicados con precisión
-      para una agricultura más eficiente,
-      productiva y sostenible.
-    </p>
-    <a class="btn" href="#concepto">
-      Explorar el fertirriego
-    </a>
-  </div>
-</div>
-
-<section id="concepto">
-  <h2>¿Qué es el fertirriego?</h2>
-  <p>
-    El fertirriego es la aplicación de
-    fertilizantes solubles mediante el
-    sistema de riego, permitiendo suministrar
-    agua y nutrientes de forma controlada
-    según las necesidades del cultivo.
-  </p>
-  <p>
-    Es una tecnología utilizada especialmente
-    en sistemas de riego localizado y permite
-    mejorar la eficiencia del manejo hídrico
-    y nutricional.
-  </p>
-</section>
-
-<section id="ventajas">
-  <h2>Principales ventajas</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>💧 Eficiencia hídrica</h3>
-      <p>Mejor aprovechamiento del agua
-      mediante aplicaciones controladas.</p>
-    </div>
-    <div class="card">
-      <h3>🌱 Nutrición vegetal</h3>
-      <p>Dosificación de nutrientes
-      adaptada a las etapas del cultivo.</p>
-    </div>
-    <div class="card">
-      <h3>⚙️ Automatización</h3>
-      <p>Integración de bombas, sensores,
-      inyectores y controladores.</p>
-    </div>
-  </div>
-</section>
-
-<footer>
-  Proyecto educativo | Ingeniería del Agua
-  y Desarrollo Sostenible | UTEC
-</footer>
-
-</body>
-</html>
+<header><div class="logo">FERTIRRIEGO | UTEC</div><nav><a href="#inicio">Inicio</a><a href="#concepto">Concepto</a><a href="#ventajas">Ventajas</a><a href="#calculadora">Calculadora</a></nav></header>
+<div class="hero" id="inicio"><div class="hero-content"><h1>Fertirriego inteligente</h1><p>Agua y nutrientes aplicados con precisión para una agricultura más eficiente, productiva y sostenible.</p><a class="btn" href="#calculadora">Probar calculadora</a></div></div>
+<section id="concepto"><h2>¿Qué es el fertirriego?</h2><p>El fertirriego consiste en aplicar fertilizantes disueltos mediante un sistema de riego. La dosificación depende de la demanda del cultivo, el caudal de agua y la concentración de la solución nutritiva.</p><p>Un sistema típico integra una fuente de agua, filtros, bomba, equipo inyector, tuberías y emisores. La inyección debe contar con dispositivos de prevención de retorno y medidas de seguridad adecuadas.</p></section>
+<section id="ventajas"><h2>Principales ventajas</h2><div class="cards"><div class="card"><h3>💧 Eficiencia hídrica</h3><p>Aplicación controlada de agua y nutrientes.</p></div><div class="card"><h3>🌱 Nutrición vegetal</h3><p>Dosificación adaptada a las necesidades del cultivo.</p></div><div class="card"><h3>⚙️ Automatización</h3><p>Integración de inyectores, sensores y controladores.</p></div></div></section>
+<section id="calculadora"><h2>Calculadora de fertirriego</h2><p>Ingresá las concentraciones en <b>gramos de fertilizante por litro (g/L)</b>. El cálculo supone mezcla ideal, agua de entrada sin el fertilizante considerado y solución madre de concentración conocida.</p><div class="calculator">
+<div class="field"><label for="agua">Caudal de agua antes de la inyección (L/h)</label><input id="agua" type="number" min="0" step="any" value="10000"></div>
+<div class="field"><label for="objetivo">Concentración final deseada (g/L)</label><input id="objetivo" type="number" min="0" step="any" value="0.1"></div>
+<div class="field"><label for="madre">Concentración de la solución madre (g/L)</label><input id="madre" type="number" min="0" step="any" value="100"></div>
+<div class="field"><label for="horas">Duración del riego (horas)</label><input id="horas" type="number" min="0" step="any" value="2"></div>
+<div id="resultado" class="result" aria-live="polite"></div>
+<p class="note"><small>Balance de masa: Q<sub>inyección</sub> = Q<sub>agua</sub> × C<sub>final</sub> / (C<sub>madre</sub> − C<sub>final</sub>). La concentración final incluye el volumen inyectado. Se calcula masa de fertilizante, no masa de un nutriente específico. Verificá solubilidad, compatibilidad, calidad del agua y capacidad del inyector antes de aplicar en campo.</small></p>
+</div></section>
+<footer>Proyecto educativo | Ingeniería del Agua y Desarrollo Sostenible | UTEC</footer>
+<script>
+const ids=['agua','objetivo','madre','horas'];const fmt=n=>n.toLocaleString('es-UY',{maximumFractionDigits:3});
+function calcular(){const [q,c,s,t]=ids.map(id=>Number(document.getElementById(id).value));const out=document.getElementById('resultado');if(ids.some(id=>document.getElementById(id).value.trim()==='')||![q,c,s,t].every(Number.isFinite)||q<=0||c<=0||s<=c||t<=0){out.innerHTML='<p class="error">Ingresá valores positivos. La concentración de la solución madre debe ser mayor que la concentración final deseada.</p>';return}const qi=q*c/(s-c),masa=qi*s,vol=qi*t;out.innerHTML='<p>Caudal de inyección requerido</p><strong>'+fmt(qi)+' L/h</strong><p>Equivalente: '+fmt(qi*1000/60)+' mL/min</p><p>Fertilizante aplicado por hora: <b>'+fmt(masa/1000)+' kg/h</b></p><p>Solución madre durante el riego: <b>'+fmt(vol)+' L</b></p><p>Fertilizante total aplicado: <b>'+fmt(masa*t/1000)+' kg</b></p>'}
+ids.forEach(id=>document.getElementById(id).addEventListener('input',calcular));calcular();
+</script>
+</body></html>
